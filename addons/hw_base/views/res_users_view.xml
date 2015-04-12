@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='view_res_users_form_expand'>
+            <field name="name">view.res.users.form.expand</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+           <xpath expr="//field[@name='active']" position="after">
+                        <group>
+                            <field name="department_id" required="True" domain="[('company_id', '=', company_id)]"/>
+                            <field name="job_id" required="True"/>
+                        </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

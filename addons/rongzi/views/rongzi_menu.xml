@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--同级菜单必须加结构参数sequence，不然报错，menu跟action分开存放的时候action.xml文件必须放在menu.xml文件前面-->
+        <menuitem name="资金管理"  id="menu_rongzi_root" />
+        <menuitem name="业务操作"  id="menu_rongzi_yewu"  parent="menu_rongzi_root" sequence="10"/>
+        <menuitem name="发票管理"  id="menu_rongzi_fapiao"  parent="menu_rongzi_yewu" action="action_rongzi_fapiao_new" sequence="10"/>
+        <menuitem name="排货路线"  id="menu_rongzi_paicheng"  parent="menu_rongzi_yewu" action="action_rongzi_paicheng_new" sequence="20"/>
+        <menuitem name="购销合同"  id="menu_rongzi_gouxiao"  parent="menu_rongzi_yewu" action="action_rongzi_gouxiao_new" sequence="30"/>
+        <menuitem name="设置"  id="menu_rongzi_sys"  parent="menu_rongzi_root" sequence="20"/>
+        <menuitem name="银行设置"  id="menu_rongzi_yinhang"  parent="menu_rongzi_sys" />
+        <menuitem name="银行"  id="menu_rongzi_yinhang_line"  parent="menu_rongzi_yinhang" action="action_rongzi_yinhang_line" sequence="30" />
+        <menuitem name="总行"  id="menu_rongzi_yinhang_zonghang"  parent="menu_rongzi_yinhang" action="action_rongzi_yinhang_zonghang" sequence="40"/>
+    </data>
+</openerp>

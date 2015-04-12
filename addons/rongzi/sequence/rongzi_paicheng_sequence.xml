@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--noupdate防止升级时再次添加-->
+    <data noupdate="1">
+        <record id="seq_type_rongzi_paicheng" model="ir.sequence.type">
+            <field name="name">rongzi_paichang</field>
+            <field name="code">rongzi.paicheng</field>
+        </record>
+        <record id="seq_rongzi_paicheng" model="ir.sequence">
+            <field name="name">rongzi_paicheng</field>
+            <field name="code">rongzi.paicheng</field>
+            <field name="prefix">PC/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</openerp>

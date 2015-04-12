@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="ir.module.category" id="module_category_rongzi_paicheng_access">
+            <field name="name">融资排货权限</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_rongzi_paicheng_made" model="res.groups">
+            <field name="name">制单权限</field>
+            <field name="category_id" ref="module_category_rongzi_paicheng_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="menu_access" eval="[(4, ref('rongzi.menu_rongzi_root')),(4, ref('menu_rongzi_yewu'))
+                ,(4, ref('rongzi.menu_rongzi_paicheng')),(4, ref('rongzi.menu_rongzi_sys'))
+                ,(4, ref('rongzi.menu_rongzi_yinhang')),(4, ref('rongzi.menu_rongzi_yinhang_line')),(4, ref('rongzi.menu_rongzi_yinhang_zonghang'))]"/>
+            <field name="view_access" eval="[(4, ref('rongzi.view_rongzi_yinhang_form')),(4, ref('rongzi.view_rongzi_yinhang_tree'))
+                ,(4, ref('rongzi.view_rongzi_yinhang_line_form')),(4, ref('view_rongzi_yinhang_line_tree'))
+                ,(4, ref('rongzi.rongzi_paicheng_form')),(4, ref('rongzi.rongzi_paicheng_tree'))
+                ,(4, ref('rongzi.rongzi_paicheng_chupiao_line_view_tree')),(4, ref('rongzi.rongzi_paicheng_chupiao_line_view_form'))
+                ,(4, ref('rongzi.rongzi_paicheng_tiexian_line_view_tree')),(4, ref('rongzi.rongzi_paicheng_tiexian_line_view_form'))
+                ,(4, ref('rongzi.view_rongzi_paicheng_filter'))]"/>
+        </record>
+
+        <record id="group_rongzi_paicheng_guidang" model="res.groups">
+            <field name="name">归档权限</field>
+            <field name="category_id" ref="module_category_rongzi_paicheng_access"/>
+            <field name="implied_ids" eval="[(4, ref('rongzi.group_rongzi_paicheng_made'))]"/>
+        </record>
+
+
+    </data>
+</openerp>

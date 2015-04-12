@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='rongzi_gouxiao_form'>
+            <field name="name">rongzi.gouxiao.form</field>
+            <field name="model">rongzi.gouxiao</field>
+            <field name="arch" type="xml">
+                <form string="购销合同">
+                    <header>
+<button name="action_view_confirm" states="draft" string="审核" type="object" class="oe_highlight" groups="rongzi.group_rongzi_gouxiao_confirm" confirm="确定审核吗!"/>
+<button name="action_view_cancelled" states="confirm" string="取消审核" type="object" class="oe_highlight" groups="rongzi.group_rongzi_gouxiao_confirm" confirm="需要取消审核?"/>
+<field name="state" widget="statusbar" statusbar_visible="draft,confirm" statusbar_colors='{"confirm":"blue","draft":"red"}'/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="NO.:" class="oe_inline"/>
+                                <field name="name" class="oe_inline" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_gf"/>
+                                <field name="date" />
+                                <field name="amount" />
+                            </group>
+                            <group>
+                                <field name="company_xf"/>
+                                <field name="address" />
+                                <field name="paicheng_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="购销明细">
+                                <field name="line_ids">
+                                    <tree editable="top">
+                                        <field name="product_id"/>
+                                        <field name="product_qty"/>
+                                        <field name="guige"/>
+                                        <field name="product_uom"/>
+                                        <field name="price"/>
+                                        <field name="jine" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rongzi_gouxiao_tree">
+            <field name="name">rongzi.gouxiao.tree</field>
+            <field name="model">rongzi.gouxiao</field>
+            <field name="arch" type="xml">
+                <tree string="Model tree" colors="red:state=='draft'">
+                    <field name="name"/>
+                    <field name="paicheng_id" />
+                    <field name="company_gf"/>
+                    <field name="company_xf"/>
+                    <field name="state"/>
+                    <field name="date"/>
+                    <field name="amount" sum="Total" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_rongzi_gouxiao_filter" model="ir.ui.view">
+            <field name="name">rongzi.gouxiao.filter</field>
+            <field name="model">rongzi.gouxiao</field>
+            <field name="arch" type="xml">
+                <search string="购销合同搜索">
+                    <field name="name" string="编号"/>
+                    <field name="amount" string="总金额"/>
+                    <field name="company_gf" string="供方"/>
+                    <field name="company_xf" string="需方"/>
+                    <field name="paicheng_id" string="根据排货路线查询"/>
+                    <filter icon="terp-document-new" domain="[('state','=','draft')]" string="草稿单据" help="处于草稿状态的单据"/>
+                    <separator/>
+                    <group expand="0" string="分组">
+                        <filter string="根据日期分组" icon="terp-personal+" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="根据供方分组" icon="terp-personal+" domain="[]" context="{'group_by':'company_gf'}"/>
+                        <filter string="根据需方分组" icon="terp-personal+" domain="[]" context="{'group_by':'company_xf'}"/>
+                        <filter string="根据排货路线分组" icon="terp-personal+" domain="[]" context="{'group_by':'paicheng_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_rongzi_gouxiao_new">
+            <field name="name">购销排程</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rongzi.gouxiao</field>
+            <field name="search_view_id" ref="view_rongzi_gouxiao_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">请点击这里新建一条购销合同!</p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rongzi_paicheng_chupiao,rongzi.paicheng.chupiao,model_rongzi_paicheng_chupiao,rongzi.group_rongzi_paicheng_made,1,1,1,1
+access_rongzi_paicheng_tiexian,rongzi.paicheng.tiexian,model_rongzi_paicheng_tiexian,rongzi.group_rongzi_paicheng_made,1,1,1,1
+access_rongzi_paicheng,rongzi.paicheng,model_rongzi_paicheng,rongzi.group_rongzi_paicheng_made,1,1,1,1
+access_rongzi_yinhang,rongzi.yinhang,model_rongzi_yinhang,rongzi.group_rongzi_paicheng_made,1,0,0,0
+access_rongzi_yinhang_line,rongzi.yinhang_line,model_rongzi_yinhang_line,rongzi.group_rongzi_paicheng_made,1,0,0,0

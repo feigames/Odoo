@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+     <record model="ir.actions.act_window" id="action_rongzi_fapiao_new">
+       <field name="name">发票管理</field>
+       <field name="res_model">rongzi.fapiao</field>
+    </record>
+
+        <record model='ir.ui.view' id='view_rongzi_fapiao_form'>
+            <field name="name">view.rongzi.fapiao.form</field>
+            <field name="model">rongzi.fapiao</field>
+            <field name="arch" type="xml">
+                <form string="Model form">
+                  <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="发票号:" class="oe_inline"/>
+                            <field name="name" class="oe_inline" />
+                        </h1>
+                    </div>
+                    <group>
+                    <field name="jine" />
+                   </group>
+                    <notebook>
+                        <page string="记账联">
+                          <div style="width: 800px;">
+                           <field name="image_jz" widget="image" width="100%"/>
+                          </div>
+                        </page>
+                        <page string="发票联">
+                             <div style="width: 800px;">
+                           <field name="image_fp" widget="image" width="100%"/>
+                          </div>
+                        </page>
+                        <page string="抵扣联">
+                             <div style="width: 800px;">
+                           <field name="image_dk" widget="image" width="100%"/>
+                          </div>
+                        </page>
+                    </notebook>
+
+                  </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_rongzi_fapiao_tree'>
+            <field name="name">view.rongzi.fapiao.tree</field>
+            <field name="model">rongzi.fapiao</field>
+            <field name="arch" type="xml" >
+                <tree string="Model tree"  >
+                   <field name="name"  />
+                   <field name="image_jz"/>
+                   <field name="image_fp"/>
+                   <field name="image_dk"/>
+                   <field name="jine"  sum="Total"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.actions.act_window" id="rongzi_gouxiao_view_tree">
+            <field name="name">购销合同</field>
+            <field name="res_model">rongzi.gouxiao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('paicheng_id.name','=',paicheng_id)]</field>
+            <field name="view_id" ref="rongzi.rongzi_gouxiao_tree"/>
+        </record>
+
+        <record model='ir.ui.view' id='rongzi_paicheng_form'>
+            <field name="name">rongzi.paicheng.form</field>
+            <field name="model">rongzi.paicheng</field>
+            <field name="arch" type="xml">
+                <form string="排货路线">
+                    <header>
+<button name="action_view_confirm" states="draft" string="归档" type="object" class="oe_highlight" groups="rongzi.group_rongzi_paicheng_guidang" confirm="确定归档吗!"/>
+<button name="action_view_cancelled" states="confirm" string="修改归档" type="object" class="oe_highlight" groups="rongzi.group_rongzi_paicheng_guidang" confirm="需要修改档案?"/>
+<field name="state" widget="statusbar" statusbar_visible="draft,confirm" statusbar_colors='{"confirm":"blue","draft":"red"}'/>
+                    </header>
+                    <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="NO.:" class="oe_inline"/>
+                            <field name="name" class="oe_inline" />
+                        </h1>
+                       <button type="action"
+                        name="%(rongzi_gouxiao_view_tree)d"
+                        class="oe_inline oe_stat_button"
+                        icon="fa-truck"
+                        groups="base.group_user"
+                        context="{'paicheng_id': name}">
+                        <field string="购销合同" name="paicheng_gouxiao_count" widget="statinfo"/>
+                    </button>
+                    </div>
+                    <group>
+                         <field name="date_paicheng"/>
+                         <field name="amount" />
+                    </group>
+                    <notebook>
+                            <page string="货物明细">
+                                <field name="line_ids">
+                                    <tree editable="top">
+                                        <field name="product_id"/>
+                                        <field name="product_qty"/>
+                                        <field name="product_uom"/>
+                                        <field name="price"/>
+                                        <field name="jine" sum="Total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        <page string="排货路线">
+                            <field name="xianlu" widget="html" />
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="rongzi_paicheng_tree">
+            <field name="name">rongzi.paicheng.tree</field>
+            <field name="model">rongzi.paicheng</field>
+            <field name="arch" type="xml">
+                <tree string="Model tree" colors="red:state=='draft'">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="date_paicheng"/>
+                    <field name="amount" sum="Total" />
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="view_rongzi_paicheng_filter" model="ir.ui.view">
+            <field name="name">rongzi.paicheng.filter</field>
+            <field name="model">rongzi.paicheng</field>
+            <field name="arch" type="xml">
+                <search string="排程搜索">
+                    <field name="name" string="内部编号"/>
+                    <field name="amount" string="总金额"/>
+                    <filter icon="terp-document-new" domain="[('state','=','draft')]" string="草稿单据" help="处于草稿状态的单据"/>
+                    <separator/>
+                    <group expand="0" string="分组">
+                        <filter string="根据日期分组" icon="terp-personal+" domain="[]" context="{'group_by':'date_paicheng'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_rongzi_paicheng_new">
+            <field name="name">排货路线</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rongzi.paicheng</field>
+            <field name="search_view_id" ref="view_rongzi_paicheng_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">请点击这里新建一条排程路线!</p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

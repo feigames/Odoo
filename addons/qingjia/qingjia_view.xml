@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+     <record model="ir.actions.act_window" id="action_qingjia_qingjd">
+       <field name="name">请假单</field>
+       <field name="res_model">qingjia.qingjd</field>
+    </record>
+    <menuitem name="请假管理"  id="menu_qingjia_root" />
+    <menuitem name="请假单"  id="menu_qingjd"  parent="menu_qingjia_root"  />
+    <menuitem name="填写请假单"  id="menu_qingjd_tx"  parent="menu_qingjd" action="action_qingjia_qingjd"/>
+
+    <record model='ir.ui.view' id='view_qingjia_qingjd_form'>
+            <field name="name">view.qingjia.qingjd.form</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <form string="Model form">
+                  <!--<sheet>-->
+                        <group>
+                           <field name="tians" />
+                           <field name="kaisrq"/>
+                            <field name="zje" />
+                        </group>
+                        <group string="请假事由">
+                            <field nolabel="1" name="shiyou" />
+                        </group>
+                        <group string="请假明细">
+                            <field  name="qjd_mx" on_change="on_change_mx_jine(qjd_mx)" />
+                        </group>
+                </form>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_qingjia_qingjd_tree'>
+            <field name="name">view.qingjia.qingjd.tree</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <tree string="Model tree" >
+                   <field name="tians" />
+                   <field name="kaisrq"/>
+                   <field name="shiyou" />
+                    <field name="zje" />
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='view_qjd_mx_form'>
+            <field name="name">view.qjd.mx.form</field>
+            <field name="model">qjd.mx</field>
+            <field name="arch" type="xml">
+                <form string="Model form">
+                  <!--<sheet>-->
+                        <group>
+                           <field name="jine" />
+                           <field name="note"/>
+                        </group>
+                </form>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_qjd_mx_tree'>
+            <field name="name">view.qjd.mx.tree</field>
+            <field name="model">qjd.mx</field>
+            <field name="arch" type="xml" >
+                <tree string="Model tree"  editable="button" >
+                   <field name="jine"  />
+                   <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

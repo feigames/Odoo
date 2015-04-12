@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--noupdate防止升级时再次添加-->
+    <data noupdate="1">
+        <record id="seq_type_rongzi_gouxiao" model="ir.sequence.type">
+            <field name="name">rongzi_gouxiao</field>
+            <field name="code">rongzi.gouxiao</field>
+        </record>
+        <record id="seq_rongzi_gouxiao" model="ir.sequence">
+            <field name="name">rongzi_gouxiao</field>
+            <field name="code">rongzi.gouxiao</field>
+            <field name="prefix">CG/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</openerp>

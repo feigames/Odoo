@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+     <record model="ir.actions.act_window" id="action_rongzi_yinhang_line">
+       <field name="name">银行</field>
+       <field name="res_model">rongzi.yinhang.line</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_rongzi_yinhang_zonghang">
+       <field name="name">总行</field>
+       <field name="res_model">rongzi.yinhang</field>
+    </record>
+        <record model='ir.ui.view' id='view_rongzi_yinhang_form'>
+            <field name="name">view.rongzi.yinhang.form</field>
+            <field name="model">rongzi.yinhang</field>
+            <field name="arch" type="xml">
+                <form string="Model form">
+                  <!--<sheet>-->
+                        <group>
+                           <field name="name" />
+                        </group>
+                </form>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_rongzi_yinhang_tree'>
+            <field name="name">view.rongzi.yinhang.tree</field>
+            <field name="model">rongzi.yinhang</field>
+            <field name="arch" type="xml" >
+                <tree string="Model tree"  >
+                   <field name="name"  />
+                </tree>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_rongzi_yinhang_line_form'>
+            <field name="name">view.rongzi.yinhang.line.form</field>
+            <field name="model">rongzi.yinhang.line</field>
+            <field name="arch" type="xml">
+                <form string="Model form">
+                  <!--<sheet>-->
+                        <group>
+                           <field name="name" />
+                           <field name="zonghang_id" />
+                        </group>
+                </form>
+            </field>
+        </record>
+        <record model='ir.ui.view' id='view_rongzi_yinhang_line_tree'>
+            <field name="name">view.rongzi.yinhang.line.tree</field>
+            <field name="model">rongzi.yinhang.line</field>
+            <field name="arch" type="xml" >
+                <tree string="Model tree"  >
+                   <field name="name"  />
+                   <field name="zonghang_id" />
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>
